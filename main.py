@@ -26,6 +26,16 @@ def switch_to_pc():
 		file8_cont = dict_sav['file8']
 		file8.write(file8_cont)
 		file8.close()
+	if 'system_information_962' in dict_sav:
+		si962 = open('system_information_962','w')
+		si962_cont = dict_sav['system_information_962']
+		si962.write(si962_cont)
+		si962.close()
+	if 'system_information_963' in dict_sav:
+		si963 = open('system_information_963','w')
+		si963_cont = dict_sav['system_information_963']
+		si963.write(si963_cont)
+		si963.close()
 	sav.close()
 def pc_to_switch():
 	dict_sav = {"default":""}
@@ -46,6 +56,14 @@ def pc_to_switch():
 		file8 = open('file8','r')
 		file8_cont = file8.read()
 		dict_sav['file8'] = file8_cont
+	if os.path.exists('system_information_962'):
+		si962 = open('system_information_962','r')
+		si962_cont = si962.read()
+		dict_sav['system_information_962'] = si962_cont
+	if os.path.exists('system_information_963'):
+		si963 = open('system_information_963','r')
+		si963_cont = si963.read()
+		dict_sav['system_information_963'] = si963_cont
 	sav_cont = json.dumps(dict_sav)
 	sav = open('undertale.sav','w')
 	sav.write(sav_cont)
@@ -62,7 +80,7 @@ def ch():
 	choose = input('>')
 	if choose == "1":
 		print('请确定您已将file0,file9,undertale.ini放至当前目录下')
-		print('如果存在file8也请一并放置')
+		print('如果存在file8/system_information_962/963也请一并放置')
 		print('转换中...')
 		time.sleep(3)
 		pc_to_switch()
@@ -84,7 +102,7 @@ def en():
 	choose = input('>')
 	if choose == "1":
 		print('Please make sure you have put \'file0\',\'file9\' and \'undertale.ini\' to current directory.')
-		print('If \'file8\' exists, please place it together')
+		print('If \'file8\' ,\'system_information_962\' or \'system_information_963\' exists, please place it together')
 		print('Converting...')
 		time.sleep(3)
 		pc_to_switch()
