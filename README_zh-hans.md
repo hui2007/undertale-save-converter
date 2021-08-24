@@ -8,5 +8,7 @@
 + file0
 + file9
 + undertale.ini
++ system_information_962
++ system_information_963
 ### Switch转PC
 + undertale.sav
